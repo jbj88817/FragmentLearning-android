@@ -5,5 +5,5 @@ package com.bojie.fragmentlearn;
  */
 public interface Communicator {
 
-    public void respond(String data);
+    public void respond(int position);
 }

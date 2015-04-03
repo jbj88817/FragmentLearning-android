@@ -1,5 +1,6 @@
 package com.bojie.fragmentlearn;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,22 +14,12 @@ import android.widget.TextView;
 public class FragmentB extends Fragment {
 
     TextView mTextView;
-    String data;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_b, container, false);
-        if(savedInstanceState == null){
-
-        } else {
-            data = savedInstanceState.getString("text");
-            TextView myText = (TextView) view.findViewById(R.id.textView);
-            myText.setText(data);
-        }
         return view;
     }
-
-
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -37,14 +28,11 @@ public class FragmentB extends Fragment {
 
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("text", data);
-    }
-
-    public void changeText(String data){
-        this.data = data;
-        mTextView.setText(data);
+    public void changeData(int position) {
+        if (isAdded()) {
+            Resources resources = getResources();
+            String[] descriptions = resources.getStringArray(R.array.descriptions);
+            mTextView.setText(descriptions[position]);
+        }
     }
 }

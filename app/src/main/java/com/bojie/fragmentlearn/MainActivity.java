@@ -22,10 +22,6 @@ public class MainActivity extends ActionBarActivity implements Communicator{
         transaction.add(R.id.my_layout, fragment, "JbjFragment");
         transaction.commit();*/
 
-
-
-
-
     }
 
     @Override
@@ -51,9 +47,9 @@ public class MainActivity extends ActionBarActivity implements Communicator{
     }
 
     @Override
-    public void respond(String data) {
+    public void respond(int position) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentB f2 = (FragmentB) manager.findFragmentById(R.id.fragment2);
-        f2.changeText(data);
+        f2.changeData(position);
     }
 }
